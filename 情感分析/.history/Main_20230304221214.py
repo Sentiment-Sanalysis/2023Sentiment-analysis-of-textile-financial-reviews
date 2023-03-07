@@ -1,0 +1,12 @@
+from flask import Flask, render_template, request
+app = Flask(__name__)
+<p>@app.route('/')
+def student():
+   return render_template('student.html')</p>
+<p>@app.route('/result',methods = ['POST', 'GET'])
+def result():
+   if request.method == 'POST':
+      result = request.form
+      return render_template("result.html",result = result)</p>
+if __name__ == '__main__':
+   app.run(debug = True)
