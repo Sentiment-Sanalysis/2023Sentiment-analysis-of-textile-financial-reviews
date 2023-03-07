@@ -1,0 +1,103 @@
+使用 Python 枚举类型¶
+路径参数的值将是一个枚举成员。
+
+比较枚举成员¶
+你可以将它与你创建的枚举类 ModelName 中的枚举成员进行比较：
+
+from enum import Enum
+
+from fastapi import FastAPI
+
+
+class ModelName(str, Enum):
+    alexnet = "alexnet"
+    resnet = "resnet"
+    lenet = "lenet"
+
+
+app = FastAPI()
+
+
+@app.get("/models/{model_name}")
+async def get_model(model_name: ModelName):
+    if model_name is ModelName.alexnet:
+        return {"model_name": model_name, "message": "Deep Learning FTW!"}
+
+    if model_name.value == "lenet":
+        return {"model_name": model_name, "message": "LeCNN all the images"}
+
+    return {"model_name": model_name, "message": "Have some residuals"}
+获取枚举值¶
+你可以使用 model_name.value 或通常来说 your_enum_member.value 来获取实际的值（在这个例子中为 str）：
+
+from enum import Enum
+
+from fastapi import FastAPI
+
+
+class ModelName(str, Enum):
+    alexnet = "alexnet"
+    resnet = "resnet"
+    lenet = "lenet"
+
+
+app = FastAPI()
+
+
+@app.get("/models/{model_name}")
+async def get_model(model_name: ModelName):
+    if model_name is ModelName.alexnet:
+        return {"model_name": model_name, "message": "Deep Learning FTW!"}
+
+    if model_name.value == "lenet":
+        return {"model_name": model_name, "message": "LeCNN all the images"}
+
+    return {"model_name": model_name, "message": "Have some residuals"}
+Tip
+
+你也可以通过 ModelName.lenet.value 来获取值 "lenet"。
+
+返回枚举成员¶
+你可以从路径操作中返回枚举成员，即使嵌套在 JSON 结构中（例如一个 dict 中）。
+
+在返回给客户端之前，它们将被转换为对应的值：
+
+from enum import Enum
+
+from fastapi import FastAPI
+
+
+class ModelName(str, Enum):
+    alexnet = "alexnet"
+    resnet = "resnet"
+    lenet = "lenet"
+
+
+app = FastAPI()
+
+
+@app.get("/models/{model_name}")
+async def get_model(model_name: ModelName):
+    if model_name is ModelName.alexnet:
+        return {"model_name": model_name, "message": "Deep Learning FTW!"}
+
+    if model_name.value == "lenet":
+        return {"model_name": model_name, "message": "LeCNN all the images"}
+
+    return {"model_name": model_name, "message": "Have some residuals"}
+包含路径的路径参数¶
+假设你有一个路径操作，它的路径为 /files/{file_path}。
+
+但是你需要 file_path 自身也包含路径，比如 home/johndoe/myfile.txt。
+
+因此，该文件的URL将类似于这样：/files/home/johndoe/myfile.txt。
+
+OpenAPI 支持¶
+OpenAPI 不支持任何方式去声明路径参数以在其内部包含路径，因为这可能会导致难以测试和定义的情况出现。
+
+不过，你仍然可以通过 Starlette 的一个内部工具在 FastAPI 中实现它。
+
+而且文档依旧可以使用，但是不会添加任何该参数应包含路径的说明。
+
+路径转换器¶
+你可以使用直接来自 Starlette 的选项来声明一个包含路径的路径参数：
