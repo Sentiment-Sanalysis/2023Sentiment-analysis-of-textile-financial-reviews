@@ -5,7 +5,6 @@
 @Author  :   ZihanWang
 '''
 '''
-    Wordcloud.py->fastapi.py
     Created by Asen on 2023/3/5
 '''
 

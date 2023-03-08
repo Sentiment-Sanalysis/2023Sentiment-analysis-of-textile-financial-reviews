@@ -1,11 +1,10 @@
 # -*- encoding: utf-8 -*-
 '''
-@File    :   Wordcloud.py
+@File    :   Wordcloud.py-》
 @Time    :   2023/03/05 22:55:38
 @Author  :   ZihanWang
 '''
 '''
-    Wordcloud.py->fastapi.py
     Created by Asen on 2023/3/5
 '''
 
