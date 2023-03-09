@@ -1,0 +1,2 @@
+q = "./ee.txt"
+with 
