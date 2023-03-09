@@ -38,7 +38,7 @@ class core():
         # 将分词结果转换为词向量
         word_vecs = self.get_predict_vecs(words)
         #加载模型
-        cls = joblib.load("./data/svm_model.model")
+        cls = joblib.load("./data/nb_model.model")
         #预测得到结果
         result = cls.predict(word_vecs)
         #输出结果

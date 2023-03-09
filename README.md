@@ -17,4 +17,5 @@
 #### 3.1 环境依赖
 
 - python 3.6
-- 
+
+https://github.com/Sentiment-Sanalysis/2023Sentiment-analysis-of-textile-financial-reviews.git
