@@ -1,9 +1,10 @@
 # -*- encoding: utf-8 -*-
 '''
-@File    :   Wordcloud.py
+@File    :   app.py
 @Time    :   2023/03/05 22:55:38
-@Author  :   ZihanWang
+@Author  :   ZihanWang,
 '''
+
 import jieba
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -27,7 +28,7 @@ def word_cloud(filepath):
     # 生成词云
     wc = WordCloud(
         # 参数列表
-        font_path='msyh.ttc',  # 设置字体
+        font_path='HGKT_CNKI.TTF',  # 设置字体
         background_color='white',  # 设置背景颜色
         width=800,  # 设置宽度
         height=600,  # 设置高度

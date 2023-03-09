@@ -2,7 +2,7 @@
 '''
 @File    :   app.py
 @Time    :   2023/03/05 22:55:38
-@Author  :   ZihanWang,Asen
+@Author  :   ZihanWang,Asen Wang
 '''
 
 import jieba
